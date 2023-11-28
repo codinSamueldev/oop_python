@@ -1,0 +1,2 @@
+class Lola():
+    piel = "harsh"
