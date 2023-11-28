@@ -16,3 +16,5 @@ celular4 = Celular()
 print(type(celular1.modelo)) 
 print(celular1.marca) 
 print(celular1.camara)
+
+#One of the problems creating class and objects is that every new object is limited buy the attributes. Means, new objects will have same attributes so if we want to create a new cellphone with different attributes we are not able to do that. 
