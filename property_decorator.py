@@ -3,12 +3,22 @@ class Persona:
         self.__nombre = nombre
         self.__edad = edad
 
-    def get_nombre(self):
-        #This a getter
+    @property
+    def nombre(self):
         return self.__nombre
-    
-    def set_nombre(self, name):
-        self.__nombre = name
 
 
 alberto = Persona("Alberto", 21)
+
+nombre = alberto.nombre
+print(nombre)
+
+""" 
+@property already understood that name it is a getter, so if we try to modify its return will output error.
+
+alberto.nombre = "Alpaca"
+"""
+
+alberto.__nombre = "Alpaca"
+nombre = alberto.__nombre
+print(nombre)
