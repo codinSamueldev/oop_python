@@ -7,9 +7,19 @@ class Persona:
     def nombre(self):
         return self.__nombre
 
+    # Modify attribute's value.
+    @nombre.setter
+    def nombre(self, new_nombre):
+        self.__nombre = new_nombre
+
+    @nombre.deleter
+    def nombre(self):
+        del self.__nombre
+
 
 alberto = Persona("Alberto", 21)
 
+#Getter
 nombre = alberto.nombre
 print(nombre)
 
@@ -18,7 +28,13 @@ print(nombre)
 
 alberto.nombre = "Alpaca"
 """
+#Setter
+alberto.nombre = "Alpaca"
+nombre = alberto.nombre
+print(nombre)
 
-alberto.__nombre = "Alpaca"
-nombre = alberto.__nombre
+
+#Deleter
+#del alberto.nombre
+nombre = alberto.nombre
 print(nombre)
