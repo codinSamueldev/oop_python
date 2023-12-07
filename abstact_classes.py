@@ -14,7 +14,7 @@ class Persona(ABC):
         self.sexo = sexo
         self.trabajo = trabajo
 
-    
+    #After abstract method is created, we must always implement them in future classes if not will output error.
     @abstractclassmethod
     def trabajar(self):
         pass
@@ -24,6 +24,18 @@ class Persona(ABC):
         return f"Holi soy {self.nombre} y tengo {self.edad} años."
     
 
+class Trabajador(Persona):
+    def __init__(self, nombre, edad, sexo, trabajo):
+        super().__init__(nombre, edad, sexo, trabajo)
+
+    def trabajar(self):
+        pass
+
+    #Implementation of the abstract method.
+    def presentarse(self):
+        return f"\nHoli soy {self.nombre} y tengo {self.edad} años. Actualmente estoy trabajando como {self.trabajo}\n"
+    
+
 class Estudiante(Persona):
     def __init__(self, nombre, edad, sexo, trabajo):
         super().__init__(nombre, edad, sexo, trabajo)
@@ -31,5 +43,14 @@ class Estudiante(Persona):
     def trabajar(self):
         pass
 
-alpaca = Persona("Alpaca", 14, "M")
-# print(alpaca.trabajo)
+    #Implementation of the abstract method.
+    def presentarse(self):
+        return f"Holi soy {self.nombre} y tengo {self.edad} años. Me encuentro, estudiando para convertirme en {self.trabajo}\n"
+
+
+alpaca = Estudiante("Alpaca", 14, "M", "Back-end developer")
+print(alpaca.presentarse())
+
+alberto = Trabajador("Alberto", 41, "F", "Back-end developer")
+print(alberto.presentarse())
+
