@@ -101,9 +101,14 @@ invincible = Invincible("Mark Grayson", 79.8, "Strength")
 flash = Flash("Dick Grayson", 75.6, "Velocity")
 
 yujiman = round(((yujiro.power + batman.power)/2)**2)
-
+flasher = round(((freezer.power + flash.power)/2)**2)
+vigenos = invincible + genos
 
 print(f"""
       Yujiro Hanma and Batman had fusioned
-      Now their power has increased to {yujiman}!!\n""")
+      Now their power has increased to {yujiman}!!\n
+      
+      Freezer and Flash had fusioned
+      Now their power has increased to {flasher}!!\n
+      {vigenos.character_data()}""")
 
