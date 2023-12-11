@@ -14,7 +14,7 @@ class Auto:
         if self.fuel.get_gas() >= distancia / 2:
             self.position += distancia
             self.fuel.use_gas(distancia / 2)
-            return f"El carro se ha movido {self.position} km"
+            return f"El carro se ha movido {self.position} km\n"
         else:
             return "Mani se acabo la gasolina"
 
@@ -43,14 +43,14 @@ class FuelTank:
 fuel_tank = FuelTank()
 tesla = Auto(fuel_tank)
 
-print(tesla.fuel.get_gas())
+print("\n Fuel tank -> ", tesla.fuel.get_gas())
 print(tesla.move(10))
-print(tesla.fuel.get_gas())
+print("\n Fuel tank -> ", tesla.fuel.get_gas())
 print(tesla.move(20))
-print(tesla.fuel.get_gas())
+print("\n Fuel tank -> ", tesla.fuel.get_gas())
 print(tesla.move(30))
-print(tesla.fuel.get_gas())
+print("\n Fuel tank -> ", tesla.fuel.get_gas())
 print(tesla.move(60))
-print(tesla.fuel.get_gas())
+print("\n Fuel tank -> ", tesla.fuel.get_gas())
 print(tesla.move(90))
-print(tesla.fuel.get_gas())
+print("\n Fuel tank -> ", tesla.fuel.get_gas())
