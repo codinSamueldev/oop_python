@@ -60,4 +60,5 @@ samuel = Estudiante()
 chatgpt = Robot()
 
 print(roberto.camellar(), roberto.almorzar(), roberto.mimir())
+print(samuel.almorzar(), samuel.mimir())
 print(chatgpt.camellar())
