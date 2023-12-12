@@ -37,6 +37,13 @@ class BirdWhoCannotFly(Bird):
 
 ### 2nd example. ###
 
+"""  
+Some Kitchen appliances does not require a temperature feature, 
+so in order to have every single appliance inherit the correct methods,
+we need to create a subclass for appliances that requires set up temperature.
+This is aplicable for everything, some objects may have common attributes but not always has every single attribute.
+"""
+
 class KitchenAppliance:
     def turn_on():
         pass
@@ -45,13 +52,6 @@ class KitchenAppliance:
     def turn_off():
         pass
 
-
-"""  
-Some Kitchen appliances does not require a temperature feature, 
-so in order to have every single appliance inherit the correct methods,
-we need to create a subclass for appliances that requires set up temperature.
-This is aplicable for everything, some objects may have common attributes but not always has every single attribute.
-"""
 
 class KitchenApplianceWithTemperature(KitchenAppliance):
     def set_temperature():

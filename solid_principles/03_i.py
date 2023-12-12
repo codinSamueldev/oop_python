@@ -49,7 +49,7 @@ class Estudiante(Almorzar, Momir):
         return "Toy cansao, hora de mimir."
 
 
-class Robot(Camellador):
+class Robot(Camellar):
     
     def camellar(self):
         return "\nRobot camellando al sol y al agua."
