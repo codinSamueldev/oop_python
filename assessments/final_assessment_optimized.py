@@ -6,9 +6,8 @@
 # "\x1b[9;21m" <- Strikethrough underlined text
 
 import openai
+from openai_key import api_key
 
-
-api_key = "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"
 openai.api_key = api_key
 
 system_rol = """Vas a hacer de cuenta que eres un analizador de sentimientos.
