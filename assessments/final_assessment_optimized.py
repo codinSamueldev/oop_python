@@ -8,7 +8,7 @@
 import openai
 
 
-api_key = "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"
+api_key = "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"
 openai.api_key = api_key
 
 system_rol = """Vas a hacer de cuenta que eres un analizador de sentimientos.
@@ -21,25 +21,43 @@ system_rol = """Vas a hacer de cuenta que eres un analizador de sentimientos.
 
 mensaje = [{"role": "system", "content": system_rol}]
 
+
+# Apply SRP, bc this class should only provide color and name of the feeling.
+class Sentimiento:
+    def __init__(self, name, color):
+        self.name = name
+        self.color = color
+
+    def __str__(self) -> str:
+        return "\x1b[3;{}m{}\x1b[0;37m".format(self.color, self.name)
+
+
+# Apply OCP, since we can add more ranges without modifying method.
 class AnalizarSentimientos:
+
+    def __init__(self, range):
+        self.range = range
+
+
     def analizar_sentimiento(self, polaridad):
-        if polaridad > -0.6 and polaridad <= -0.3:
-            return "\x1b[3;31m" + "Negativo"
-        elif polaridad > -0.3 and polaridad <= -0.1:
-            return "\x1b[3;31m" + "Un poco negativo"
-        elif polaridad > -0.1 and polaridad <= 0.1:
-            return "\x1b[3;33m" + "Neutral"
-        elif polaridad >= 0.1 and polaridad <= 0.4:
-            return "\x1b[3;32m" + "Ligeramente positivo"
-        elif polaridad >= 0.4 and polaridad <= 0.9:
-            return "\x1b[3;32m" + "Positivo"
-        elif polaridad > 0.9:
-            return "\x1b[3;32m" + "Muy positivo"
-        else:
-            return "\x1b[3;31m" + "Muy negativo"
+        for range, sentimiento in self.range:
+            if range[0] < polaridad <= range[1]:
+                return sentimiento
+        
+        return Sentimiento("Muy negativo", "31")
+
+
+ranges = [
+    ((-0.6, -0.3), Sentimiento("Negativo", "31")),
+    ((-0.3, -0.1), Sentimiento("Ligeramente negativo", "31")),
+    ((-0.1, 0.1), Sentimiento("Neutral", "33")),
+    ((0.1, 0.4), Sentimiento("Ligeramente positivo", "32")),
+    ((0.4, 0.9), Sentimiento("Positivo", "32")),
+    ((0.9, 1), Sentimiento("Muy Positivo", "32"))
+]
 
         
-analizador = AnalizarSentimientos()
+analizador = AnalizarSentimientos(ranges)
 
 while True:
     user_prompt = input("\x1b[1;51m" + "\nEscribe algo, cualquier cosa: " + "\x1b[0;37m")
